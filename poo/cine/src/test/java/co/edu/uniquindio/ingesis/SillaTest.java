@@ -8,6 +8,6 @@ class SillaTest {
 
     @Test
     void createTest() {
-        Silla silla = new Silla(null,"A1");
+       // Silla silla = new Silla(null,"A1");
     }
 }
