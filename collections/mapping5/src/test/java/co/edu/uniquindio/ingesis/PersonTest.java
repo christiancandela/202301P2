@@ -25,7 +25,9 @@ class PersonTest {
         System.out.println("mapping...");
 
         // TODO put here your solution
+        
+        Person a = new Person("pedro",17);
 
-
+// select p from Person p where p.age >= 18
     }
 }
