@@ -11,6 +11,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>cine</module>
+        <module>diplomado/diplomado_01</module>
     </modules>
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
