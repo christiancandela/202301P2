@@ -1,10 +1,7 @@
 package co.edu.uniquindio.ingesis;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class Diplomado {
     private final String nombre;
@@ -51,5 +48,18 @@ public class Diplomado {
 
     public void registrarNota(String nui,Float nota){
         getEstudiante(nui).ifPresent( e->e.addNota(nota) );
+    }
+
+    public void cancelarInscripcion(String nui) throws Exception {
+        Estudiante estudiante = getEstudiante(nui).orElseThrow(()->new Exception("Estudiante no encontrado"));
+        if( estudiante.numeroNotas() >0 ){
+            throw new Exception("No se puede cancelar la inscripción de un estudiante con notas");
+        }
+    }
+
+    public DoubleSummaryStatistics getEstadisticas(int indiceParcial, Genero genero){
+        return estudiantes.stream().filter( estudiante -> estudiante.getGenero().equals(genero) )
+                .mapToDouble(estudiante -> estudiante.getNota(indiceParcial))
+                .summaryStatistics();
     }
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Function;
 
 public class Estudiante {
     private final String nui;
@@ -75,6 +76,14 @@ public class Estudiante {
 
     public void setNota(int index,Float nota){
         notas.set(index,validarNota(nota));
+    }
+
+    public Float calcularDefinitiva(){
+        return (float) notas.stream().mapToDouble(Float::doubleValue).average().orElse(Double.NaN);
+    }
+
+    public int numeroNotas(){
+        return notas.size();
     }
 
     private Float validarNota(Float nota){
