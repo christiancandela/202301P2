@@ -39,15 +39,25 @@ public class Diplomado {
     }
 
     public Optional<Estudiante> getEstudiante(String nui){
-        return estudiantes.stream().filter( e->e.getNui().equals(nui) ).findFirst();
+//        for (Estudiante estudiante:estudiantes ) {
+//            if(estudiante.getNui().equals(nui) ){
+//                return Optional.of(estudiante);
+//            }
+//        }
+        return estudiantes.stream().filter( (estudiante)->estudiante.getNui().equals(nui) ).findFirst();
     }
 
     public void registrarEstudiante(String nui, String nombre, String apellido, Genero genero){
         estudiantes.add(new Estudiante( nui,  nombre,  apellido,  genero));
     }
 
-    public void registrarNota(String nui,Float nota){
-        getEstudiante(nui).ifPresent( e->e.addNota(nota) );
+    public void registrarNota(String nui,Float nota) throws Exception {
+        Objects.requireNonNull(nui,"El número de identificación es requerido");
+        var estudiante = getEstudiante(nui);
+        if( estudiante.isEmpty() ){
+            throw new Exception("El estudiante no esta registrado");
+        }
+        estudiante.ifPresent( e->e.addNota(nota) );
     }
 
     public void cancelarInscripcion(String nui) throws Exception {
