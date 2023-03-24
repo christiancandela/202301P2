@@ -5,6 +5,8 @@ import co.edu.uniquindio.ingesis.exceptions.NombreInvalidoException;
 import co.edu.uniquindio.ingesis.exceptions.PrecioInvalidoException;
 import org.junit.jupiter.api.Test;
 
+import java.util.Collections;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ComboTest {

@@ -19,6 +19,7 @@ public class Combo extends Producto{
     public void addProducto(Producto producto){
         Objects.requireNonNull(producto,"El producto no debe ser nulo");
         productos.add(producto);
+        Collections.sort(productos);
     }
 
     public List<Producto> getProductos() {

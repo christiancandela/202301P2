@@ -5,7 +5,7 @@ import co.edu.uniquindio.ingesis.exceptions.PrecioInvalidoException;
 
 import java.util.Objects;
 
-public class Producto {
+public class Producto implements Comparable<Producto> {
     private final String nombre;
     private float precio;
 
@@ -39,5 +39,11 @@ public class Producto {
             throw new PrecioInvalidoException("El precio debe ser mayor o igual a 0");
         }
         return precio;
+    }
+
+    @Override
+    public int compareTo(Producto otroPructo) {
+        return Float.compare(precio, otroPructo.getPrecio());
+        //return -1* nombre.compareTo(otroPructo.getNombre() );
     }
 }

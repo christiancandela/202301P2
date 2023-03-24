@@ -1,7 +1,5 @@
 package co.edu.uniquindio.ingesis;
 
-import java.awt.event.MouseAdapter;
-
 public class Circulo implements Figura{
     private final float radio;
 
